@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>哥德巴赫验证器</title>
+    <meta
+      name="description"
+      content="输入一个大于 6 的偶数，分批计算哥德巴赫素数对，并按分页查看结果。"
+    >
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <p class="eyebrow">Goldbach</p>
+        <h1>哥德巴赫验证器</h1>
+        <p class="topbar-note">任何一个大于 6 的偶数，都可以写成两个素数之和，这就是哥德巴赫猜想。</p>
+      </header>
+
+      <section class="control-panel">
+        <input
+          id="even-input"
+          class="number-input"
+          type="text"
+          inputmode="numeric"
+          placeholder="输入偶数"
+          autocomplete="off"
+          aria-label="输入一个大于六的偶数"
+        >
+        <button id="verify-button" class="primary-button" type="button">开始验证</button>
+      </section>
+
+      <section class="status-panel">
+        <div class="status-row">
+          <span class="metric"><strong id="count-value">0</strong> 组</span>
+          <span class="metric" id="progress-text">0%</span>
+          <span class="metric metric--muted" id="status-text">待开始</span>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <button id="stop-button" class="secondary-button" type="button" disabled>停止</button>
+      </section>
+
+      <section class="result-panel">
+        <ol id="result-list" class="pair-list"></ol>
+        <p id="empty-note" class="empty-note">输入偶数后开始</p>
+      </section>
+
+      <section class="pager-panel">
+        <div class="pager">
+          <button id="prev-button" class="secondary-button" type="button">上一页</button>
+          <button id="next-button" class="secondary-button" type="button">下一页</button>
+          <span id="page-status" class="page-status">1 / 1</span>
+          <input
+            id="page-input"
+            class="page-input"
+            type="text"
+            inputmode="numeric"
+            placeholder="1"
+            aria-label="输入页码"
+          >
+          <button id="jump-button" class="secondary-button" type="button">跳转</button>
+        </div>
+        <p id="pager-hint" class="pager-hint"></p>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" hidden aria-live="polite"></div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

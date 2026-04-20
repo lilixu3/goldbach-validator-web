@@ -1,0 +1,8 @@
+{
+  "name": "goldbach-validator-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}
