@@ -5,7 +5,7 @@
 在线访问：
 
 - 主地址：<https://a.lilixu3.qzz.io>
-- GitHub Pages 备用地址：<https://lilixu3.github.io/goldbach-validator-web/>
+- Vercel 备用地址：<https://goldbach-validator-web.vercel.app>
 
 ## 功能
 
@@ -82,10 +82,16 @@ http://127.0.0.1:4173/
 
 ## 域名说明
 
-当前 GitHub Pages 保留了 `CNAME`，用于公开演示域名：
+当前正式访问域名：
 
 ```text
 a.lilixu3.qzz.io
 ```
 
-其他云平台导入部署时，默认先使用各自平台分配的域名，确认正常后再绑定自定义域名。
+当前备用访问域名：
+
+```text
+goldbach-validator-web.vercel.app
+```
+
+项目已不再使用 GitHub Pages。其他云平台导入部署时，默认先使用各自平台分配的域名，确认正常后再绑定自定义域名。
