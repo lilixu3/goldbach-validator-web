@@ -65,6 +65,39 @@
         </div>
         <p id="pager-hint" class="pager-hint"></p>
       </section>
+
+      <section class="deploy-panel" aria-labelledby="deploy-title">
+        <div class="section-head">
+          <h2 id="deploy-title">云平台部署</h2>
+          <p>导入仓库即可部署</p>
+        </div>
+        <div class="deploy-grid">
+          <article class="deploy-card">
+            <strong>Vercel</strong>
+            <span>域名：*.vercel.app</span>
+            <span>构建：npm run build</span>
+            <span>输出：dist</span>
+          </article>
+          <article class="deploy-card">
+            <strong>Netlify</strong>
+            <span>域名：*.netlify.app</span>
+            <span>构建：npm run build</span>
+            <span>输出：dist</span>
+          </article>
+          <article class="deploy-card">
+            <strong>Cloudflare Pages</strong>
+            <span>域名：*.pages.dev</span>
+            <span>构建：npm run build</span>
+            <span>输出：dist</span>
+          </article>
+          <article class="deploy-card">
+            <strong>EdgeOne</strong>
+            <span>域名：*.edgeone.app</span>
+            <span>构建：npm run build</span>
+            <span>输出：dist</span>
+          </article>
+        </div>
+      </section>
     </main>
 
     <div id="toast" class="toast" hidden aria-live="polite"></div>

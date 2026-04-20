@@ -164,3 +164,58 @@ test('index.html 会预留小弹窗提示区域', () => {
 
   assert.match(html, /id="toast"/);
 });
+
+test('package.json 提供统一的 build 脚本用于云平台导入部署', () => {
+  const pkg = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+
+  assert.equal(pkg.scripts.build, 'node scripts/build-static.mjs');
+});
+
+test('仓库包含 Vercel 配置，导入后无需手填输出目录', () => {
+  const json = JSON.parse(fs.readFileSync(new URL('../vercel.json', import.meta.url), 'utf8'));
+
+  assert.equal(json.framework, null);
+  assert.equal(json.buildCommand, 'npm run build');
+  assert.equal(json.outputDirectory, 'dist');
+});
+
+test('仓库包含 Netlify 配置，导入后无需手填发布目录', () => {
+  const toml = fs.readFileSync(new URL('../netlify.toml', import.meta.url), 'utf8');
+
+  assert.match(toml, /\[build\]/);
+  assert.match(toml, /command\s*=\s*"npm run build"/);
+  assert.match(toml, /publish\s*=\s*"dist"/);
+});
+
+test('仓库包含 Cloudflare Pages 配置，导入后无需手填输出目录', () => {
+  const jsonc = fs.readFileSync(new URL('../wrangler.jsonc', import.meta.url), 'utf8');
+
+  assert.match(jsonc, /"pages_build_output_dir"\s*:\s*"\.\/dist"/);
+});
+
+test('仓库包含 EdgeOne 配置，导入后无需手填输出目录', () => {
+  const json = JSON.parse(fs.readFileSync(new URL('../edgeone.json', import.meta.url), 'utf8'));
+
+  assert.equal(json.buildCommand, 'npm run build');
+  assert.equal(json.outputDirectory, './dist');
+});
+
+test('index.html 包含常见云平台导入部署说明区块', () => {
+  const html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+
+  assert.match(html, /导入仓库即可部署/);
+  assert.match(html, /Vercel/);
+  assert.match(html, /Netlify/);
+  assert.match(html, /Cloudflare Pages/);
+  assert.match(html, /EdgeOne/);
+});
+
+test('DEPLOY.md 提供平台默认域名与导入步骤说明', () => {
+  const md = fs.readFileSync(new URL('../DEPLOY.md', import.meta.url), 'utf8');
+
+  assert.match(md, /\.vercel\.app/);
+  assert.match(md, /\.netlify\.app/);
+  assert.match(md, /\.pages\.dev/);
+  assert.match(md, /\.edgeone\.app/);
+  assert.match(md, /默认先使用平台分配域名/);
+});

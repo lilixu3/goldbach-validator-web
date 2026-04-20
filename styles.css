@@ -55,7 +55,8 @@ body::before {
 .control-panel,
 .status-panel,
 .result-panel,
-.pager-panel {
+.pager-panel,
+.deploy-panel {
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
   background: var(--panel);
@@ -92,7 +93,8 @@ body::before {
 
 .control-panel,
 .status-panel,
-.pager-panel {
+.pager-panel,
+.deploy-panel {
   margin-top: 14px;
   padding: 16px;
 }
@@ -317,6 +319,54 @@ body::before {
   font-size: 0.92rem;
 }
 
+.deploy-panel {
+  margin-top: 14px;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: 1.04rem;
+}
+
+.section-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.deploy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.deploy-card {
+  display: grid;
+  gap: 6px;
+  padding: 14px;
+  border: 1px solid rgba(23, 50, 43, 0.1);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.deploy-card strong {
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+.deploy-card span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
 .toast {
   position: fixed;
   left: 50%;
@@ -340,7 +390,8 @@ body::before {
 @media (max-width: 760px) {
   .control-panel,
   .status-panel,
-  .pair-list {
+  .pair-list,
+  .deploy-grid {
     grid-template-columns: 1fr;
   }
 
@@ -359,7 +410,8 @@ body::before {
   .control-panel,
   .status-panel,
   .result-panel,
-  .pager-panel {
+  .pager-panel,
+  .deploy-panel {
     border-radius: 22px;
   }
 
@@ -373,5 +425,10 @@ body::before {
 
   .page-status {
     justify-content: center;
+  }
+
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
