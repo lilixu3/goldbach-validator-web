@@ -200,14 +200,13 @@ test('仓库包含 EdgeOne 配置，导入后无需手填输出目录', () => {
   assert.equal(json.outputDirectory, './dist');
 });
 
-test('index.html 包含常见云平台导入部署说明区块', () => {
+test('index.html 包含简洁的仓库入口卡片', () => {
   const html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 
-  assert.match(html, /导入仓库即可部署/);
-  assert.match(html, /Vercel/);
-  assert.match(html, /Netlify/);
-  assert.match(html, /Cloudflare Pages/);
-  assert.match(html, /EdgeOne/);
+  assert.match(html, /项目仓库/);
+  assert.match(html, /GitHub 仓库/);
+  assert.match(html, /https:\/\/github\.com\/lilixu3\/goldbach-validator-web/);
+  assert.doesNotMatch(html, /导入仓库即可部署/);
 });
 
 test('DEPLOY.md 提供平台默认域名与导入步骤说明', () => {
@@ -218,4 +217,11 @@ test('DEPLOY.md 提供平台默认域名与导入步骤说明', () => {
   assert.match(md, /\.pages\.dev/);
   assert.match(md, /\.edgeone\.app/);
   assert.match(md, /默认先使用平台分配域名/);
+});
+
+test('styles.css 为仓库入口卡片提供简洁布局', () => {
+  const css = fs.readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
+
+  assert.match(css, /\.repo-panel\s*\{/);
+  assert.match(css, /\.repo-link\s*\{/);
 });

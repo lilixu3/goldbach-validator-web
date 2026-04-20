@@ -56,7 +56,7 @@ body::before {
 .status-panel,
 .result-panel,
 .pager-panel,
-.deploy-panel {
+.repo-panel {
   border: 1px solid var(--line);
   border-radius: var(--radius-xl);
   background: var(--panel);
@@ -94,7 +94,7 @@ body::before {
 .control-panel,
 .status-panel,
 .pager-panel,
-.deploy-panel {
+.repo-panel {
   margin-top: 14px;
   padding: 16px;
 }
@@ -319,52 +319,53 @@ body::before {
   font-size: 0.92rem;
 }
 
-.deploy-panel {
-  margin-top: 14px;
-}
-
-.section-head {
+.repo-panel {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 12px;
 }
 
-.section-head h2 {
-  margin: 0;
-  font-size: 1.04rem;
+.repo-copy {
+  display: grid;
+  gap: 4px;
 }
 
-.section-head p {
-  margin: 0;
+.repo-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.repo-note {
   color: var(--muted);
   font-size: 0.9rem;
 }
 
-.deploy-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.deploy-card {
-  display: grid;
-  gap: 6px;
-  padding: 14px;
-  border: 1px solid rgba(23, 50, 43, 0.1);
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.88);
-}
-
-.deploy-card strong {
-  font-size: 1rem;
+.repo-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(23, 50, 43, 0.12);
   color: var(--accent);
+  background: var(--panel-strong);
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
-.deploy-card span {
-  color: var(--muted);
-  font-size: 0.92rem;
+.repo-link:hover {
+  transform: translateY(-1px);
+  border-color: rgba(23, 50, 43, 0.22);
+}
+
+.repo-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(23, 50, 43, 0.08);
 }
 
 .toast {
@@ -390,8 +391,7 @@ body::before {
 @media (max-width: 760px) {
   .control-panel,
   .status-panel,
-  .pair-list,
-  .deploy-grid {
+  .pair-list {
     grid-template-columns: 1fr;
   }
 
@@ -411,7 +411,7 @@ body::before {
   .status-panel,
   .result-panel,
   .pager-panel,
-  .deploy-panel {
+  .repo-panel {
     border-radius: 22px;
   }
 
@@ -427,8 +427,12 @@ body::before {
     justify-content: center;
   }
 
-  .section-head {
+  .repo-panel {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .repo-link {
+    width: 100%;
   }
 }
